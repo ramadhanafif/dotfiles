@@ -26,6 +26,10 @@ output * bg ~/Pictures/background/tuukka_ervasti-afternoon_tea-2253-15.jpg fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
+# Polkit!
+exec /usr/libexec/polkit-mate-authentication-agent-1
+exec systemctl --user import-environment DISPLAY
+
 ### Idle configuration
 #
 # Example configuration:
@@ -40,6 +44,9 @@ exec swayidle -w \
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 exec waybar
+exec mako
+exec nm-applet --indicator
+exec swaymsg "workspace 2; exec $term"
 
 ### Input configuration
 #
@@ -52,6 +59,9 @@ exec waybar
 #       middle_emulation enabled
 #   }
 #
+input "1267:12440:ELAN1201:00_04F3:3098_Touchpad" {
+    natural_scroll enabled
+  }
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
@@ -67,6 +77,10 @@ exec waybar
 
     # Start your launcher
     bindsym $mod+space exec $menu
+
+
+    # Call the shutdown menu
+    bindsym $mod+bracketright exec /home/ramad/.config/rofi/powermenu.sh
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -191,20 +205,23 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
+
+
 bindsym $mod+r mode "resize"
 #
 # Utilities:
 #
-    # Special keys to adjust volume via PulseAudio
-    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
-    # Special keys to adjust brightness via brightnessctl
-    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    # Special key to take a screenshot with grim
-    bindsym Print exec grim
+# Special keys to adjust volume via PulseAudio
+bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+# Special keys to adjust brightness via brightnessctl
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+# Special key to take a screenshot with grim
+bindsym Print exec grim
 
 #
 # Status Bar:
