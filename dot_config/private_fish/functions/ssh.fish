@@ -1,4 +1,4 @@
-function ssh --description 'alias ssh=kitten ssh'
-  kitten ssh $argv
+function ssh --description 'alias ssh=ssh'
+ command ssh $argv
         
 end
