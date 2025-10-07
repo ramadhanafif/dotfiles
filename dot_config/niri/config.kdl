@@ -187,7 +187,7 @@ layout {
         // You can use any CSS linear-gradient tool on the web to set these up.
         // Changing the color space is also supported, check the wiki for more info.
         //
-        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
+        active-gradient from="#80c8ff" to="#c7ff7f" angle=45
 
         // You can also color the gradient relative to the entire view
         // of the workspace, rather than relative to just the window itself.
@@ -272,8 +272,10 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
+workspace "browser"
+
 // This line starts waybar, a commonly used bar for Wayland compositors.
-// spawn-at-startup "waybar"
+spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-sh-at-startup "swaybg -i /home/ramad/Pictures/BandungStreet.jpg -m fill"
 spawn-sh-at-startup "swayidle -w timeout 300 'swaylock -f' timeout 600 'niri msg action power-off-monitors' resume 'swaymsg \"output * power on\"' before-sleep 'swaylock -f'"
@@ -283,7 +285,7 @@ spawn-sh-at-startup "swayidle -w timeout 300 'swaylock -f' timeout 600 'niri msg
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
-    // skip-at-startup
+    skip-at-startup
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
