@@ -7,7 +7,7 @@
 }
 
 #waybar {
-  background: transparent;
+  background: @surface0;
   color: @text;
   margin: 5px 5px;
 }
@@ -42,7 +42,8 @@
 #battery,
 #pulseaudio,
 #custom-lock,
-#custom-power {
+#custom-power,
+#idle_inhibitor {
   background-color: @surface0;
   padding: 0.5rem 1rem;
   margin: 5px 0;
@@ -81,7 +82,7 @@
   margin-left: 1rem;
 }
 
-#custom-music {
+#network {
   color: @mauve;
   border-radius: 1rem;
 }
@@ -94,6 +95,11 @@
 #custom-power {
   margin-right: 1rem;
   border-radius: 0px 1rem 1rem 0px;
+  color: @red;
+}
+
+#idle_inhibitor {
+  border-radius: 0;
   color: @red;
 }
 
