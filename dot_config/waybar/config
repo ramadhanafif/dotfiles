@@ -2,11 +2,11 @@
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     // Choose the order of the modules
-    "modules-left": ["niri/workspaces"],
-    "modules-center": ["custom/music"],
-    "modules-right": ["pulseaudio", "backlight", "battery", "clock", "tray", "custom/lock", "idle_inhibitor", "custom/power" ],
+    "modules-left": ["niri/workspaces" ],
+    "modules-center": ["network", "clock","custom/weather" ],
+    "modules-right": ["pulseaudio", "backlight", "battery", "disk", "tray", "custom/lock", "idle_inhibitor", "custom/power" ],
     "tray": {
-        "icon-size": 21,
+        "icon-size": 20,
         "spacing": 10
     },
     "niri/workspaces": {
@@ -25,8 +25,7 @@
     "clock": {
         "timezone": "Europe/Stockholm",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": " {:%d/%m/%Y}",
-        "format": " {:%H:%M}"
+        "format": "{:%R %a %d %b v%V}"
     },
     "backlight": {
         "device": "intel_backlight",
@@ -38,10 +37,10 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}",
-        "format-charging": "󰂅",
-        "format-plugged": "󰂄",
-        "format-alt": "{icon}",
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂅",
+        "format-plugged": "{capacity}% 󰂄",
+    "tooltip-format": "Battery: {capacity}%\nPower: {power}\nTime left: {time}",
         "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", ""]
     },
     "pulseaudio": {
@@ -58,10 +57,31 @@
         "on-click": "sh -c '(sleep 0.5s; swaylock -f)' ",
         "format": ""
     },
+    "custom/weather":{
+        "exec": "curl wttr.in/?format=3",
+        "return-type": "text",
+        "restart-interval": 1800 
+    },
     "custom/power": {
         "tooltip": false,
         "on-click": "systemctl suspend",
         "format": "󰤄"
+    },
+    "custom/toggl": {
+        "exec": "go run /home/ramad/Projects/toggl-waybar/main.go",
+        "interval": 300,
+        "return-type" : "json"
+    },
+    "custom/adzan": {
+        "exec": "/home/ramad/Projects/mymasjid-waybar/azanwaybar",
+        "restart-interval": 1,
+        "return-type" : "json"
+    },
+    "disk": {
+        "interval": 30,
+        "format": "{percentage_free}% ",
+        "path": "/"
+    },
     "network": {
         "interface": "wlp2s0",
         "format": "{ifname}",

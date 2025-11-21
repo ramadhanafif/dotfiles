@@ -24,3 +24,5 @@ test -r '/home/ramad/.opam/opam-init/init.fish' && source '/home/ramad/.opam/opa
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
 set -gx PATH $HOME/.cabal/bin /home/ramad/.ghcup/bin $PATH # ghcup-env
 
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH

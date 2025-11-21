@@ -35,7 +35,10 @@
   border-radius: 1rem;
 }
 
+#custom-toggl,
 #custom-music,
+#disk,
+#network,
 #tray,
 #backlight,
 #clock,
@@ -47,6 +50,12 @@
   background-color: @surface0;
   padding: 0.5rem 1rem;
   margin: 5px 0;
+}
+
+#disk {
+  color: @sky;
+  border-radius: 0px 1rem 1rem 0px;
+  margin-right: 1rem;
 }
 
 #clock {
@@ -84,6 +93,11 @@
 
 #network {
   color: @mauve;
+  border-radius: 1rem;
+}
+
+#custom-toggl {
+  color: @lavender;
   border-radius: 1rem;
 }
 

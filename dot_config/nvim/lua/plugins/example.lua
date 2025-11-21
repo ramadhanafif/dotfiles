@@ -1,13 +1,3 @@
--- since this is just an example spec, don't actually load anything here and return an empty spec
--- stylua: ignore
--- if true then return {} end
-
--- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
---
--- In your plugin files, you can:
--- * add extra plugins
--- * disable/enabled LazyVim plugins
--- * override the configuration of LazyVim plugins
 return {
   -- add gruvbox
   -- { "ellisonleao/gruvbox.nvim" },
@@ -20,20 +10,18 @@ return {
   --   },
   -- },
 
-{
-    "lowitea/aw-watcher.nvim",
-    opts = {  -- required, but can be empty table: {}
-        -- add any options here
-        -- for example:
-        aw_server = {
-            host = "127.0.0.1",
-            port = 5600,
-        },
-    },
-},
-{ 'wakatime/vim-wakatime', lazy = false },
-
-
+  -- {
+  --     "lowitea/aw-watcher.nvim",
+  --     opts = {  -- required, but can be empty table: {}
+  --         -- add any options here
+  --         -- for example:
+  --         aw_server = {
+  --             host = "127.0.0.1",
+  --             port = 5600,
+  --         },
+  --     },
+  -- },
+  { "wakatime/vim-wakatime", lazy = false },
   -- change trouble config
   {
     "folke/trouble.nvim",
@@ -86,6 +74,29 @@ return {
   --     },
   --   },
   -- },
+  {
+    "neovim/nvim-lspconfig",
+    ---@class PluginLspOpts
+    opts = {
+      ---@type lspconfig.Options
+      servers = {
+        tailwindcss = {},
+      },
+      setup = {
+        tailwindcss = function(_, opts)
+          opts.settings = vim.tbl_deep_extend("force", opts.settings or {}, {
+            tailwindCSS = {
+              experimental = {
+                classRegex = {
+                  { "([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*) .*?[\"'`]" },
+                },
+              },
+            },
+          })
+        end,
+      },
+    },
+  },
   --
   -- -- add tsserver and setup with typescript.nvim instead of lspconfig
   -- {
