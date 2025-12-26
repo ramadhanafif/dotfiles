@@ -26,3 +26,12 @@ set -gx PATH $HOME/.cabal/bin /home/ramad/.ghcup/bin $PATH # ghcup-env
 
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
+
+
+set -gx LC_ALL en_US.UTF-8
+set -gx LANG en_US.UTF-8
+set -gx LANGUAGE en_US.UTF-8
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+fzf --fish | source

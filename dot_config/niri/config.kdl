@@ -4,8 +4,7 @@
 // https://yalter.github.io/niri/Configuration:-Introduction
 
 // Input device configuration.
-// Find the full list of options on the wiki:
-// https://yalter.github.io/niri/Configuration:-Input
+// Find the full list of options on the wiki: https://yalter.github.io/niri/Configuration:-Input
 input {
     keyboard {
         xkb {
@@ -81,12 +80,13 @@ output "HDMI-A-1" {
 }
 
 output "eDP-1" {
-  // off
+  scale 1.25
 }
 
 output "DP-1" {
     focus-at-startup
     position x=0 y=0
+    transform "90"
 }
 
 /-output "eDP-1" {
@@ -288,6 +288,7 @@ spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-sh-at-startup "swaybg -i /home/ramad/Pictures/BandungStreet.jpg -m fill"
 spawn-sh-at-startup "swayidle -w timeout 300 'swaylock -f' timeout 600 'niri msg action power-off-monitors' resume 'swaymsg \"output * power on\"' before-sleep 'swaylock -f'"
+spawn-sh-at-startup "/usr/bin/cvlc /home/ramad/Music/win11.wav"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -381,7 +382,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return hotkey-overlay-title="Open a Terminal: Kitty" { spawn "/home/ramad/.local/bin/kitty"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: Kitty" { spawn-sh "ghostty +new-window"; }
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 

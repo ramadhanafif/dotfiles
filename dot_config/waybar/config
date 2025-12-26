@@ -6,7 +6,7 @@
     "modules-center": ["network", "clock","custom/weather" ],
     "modules-right": ["pulseaudio", "backlight", "battery", "disk", "tray", "custom/lock", "idle_inhibitor", "custom/power" ],
     "tray": {
-        "icon-size": 20,
+        "icon-size": 15,
         "spacing": 10
     },
     "niri/workspaces": {
@@ -58,7 +58,7 @@
         "format": ""
     },
     "custom/weather":{
-        "exec": "curl wttr.in/?format=3",
+        "exec": "curl wttr.in/Stockholm?format=3",
         "return-type": "text",
         "restart-interval": 1800 
     },
