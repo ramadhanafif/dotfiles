@@ -75,18 +75,29 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
+
+
 output "HDMI-A-1" {
+  focus-at-startup
+  // position x=0 y=1080
+}
+
+output "DP-2" {
+  focus-at-startup
+    mode "2560x1440@60"
+    // position x=0 y=0
+    // transform "90"
+}
+
+output "DP-3" {
     focus-at-startup
+    mode "1920x1080"
+    transform "90"
+    position x=0 y=0
 }
 
 output "eDP-1" {
-  scale 1.25
-}
-
-output "DP-1" {
-    focus-at-startup
-    position x=0 y=0
-    transform "90"
+  focus-at-startup
 }
 
 /-output "eDP-1" {
@@ -321,7 +332,7 @@ animations {
     // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    slowdown 1.5
+    slowdown 1
 }
 
 // Window rules let you adjust behavior for individual windows.

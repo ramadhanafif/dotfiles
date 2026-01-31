@@ -35,3 +35,10 @@ set -gx LANGUAGE en_US.UTF-8
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 fzf --fish | source
+
+# pnpm
+set -gx PNPM_HOME "/home/ramad/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

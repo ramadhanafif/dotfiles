@@ -25,7 +25,8 @@ theme = TokyoNight Storm
 
 shell-integration = fish
 shell-integration-features = sudo,ssh-terminfo,ssh-env
-background-opacity = 0.95
+background-opacity = 0.90
+background-blur = true
 # Config syntax crash course
 # ==========================
 # # The config file consists of simple key-value pairs,
