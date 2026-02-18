@@ -85,8 +85,8 @@ output "HDMI-A-1" {
 output "DP-2" {
   focus-at-startup
     mode "2560x1440@60"
-    // position x=0 y=0
-    // transform "90"
+    position x=0 y=0
+    transform "90"
 }
 
 output "DP-3" {
@@ -297,7 +297,7 @@ layout {
 spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
-spawn-sh-at-startup "swaybg -i /home/ramad/Pictures/BandungStreet.jpg -m fill"
+spawn-sh-at-startup "swaybg -i /home/ramad/Pictures/GreenHills.jpg -m fill"
 spawn-sh-at-startup "swayidle -w timeout 300 'swaylock -f' timeout 600 'niri msg action power-off-monitors' resume 'swaymsg \"output * power on\"' before-sleep 'swaylock -f'"
 spawn-sh-at-startup "/usr/bin/cvlc /home/ramad/Music/win11.wav"
 
