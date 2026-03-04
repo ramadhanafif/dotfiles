@@ -21,6 +21,7 @@ return {
   --         },
   --     },
   -- },
+  { "xiyaowong/transparent.nvim", lazy = false },
   { "wakatime/vim-wakatime", lazy = false },
   -- change trouble config
   {
