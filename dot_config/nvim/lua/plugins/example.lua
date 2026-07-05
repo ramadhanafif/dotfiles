@@ -29,6 +29,13 @@ return {
     -- opts will be merged with the parent spec
     opts = { use_diagnostic_signs = true },
   },
+  -- Amp Plugin
+  {
+    "sourcegraph/amp.nvim",
+    branch = "main",
+    lazy = false,
+    opts = { auto_start = true, log_level = "info" },
+  },
 
   -- override nvim-cmp and add cmp-emoji
   -- {
@@ -82,6 +89,12 @@ return {
       ---@type lspconfig.Options
       servers = {
         tailwindcss = {},
+        clangd = {
+          cmd = {
+            "clangd",
+            "--query-driver=" .. vim.fn.expand("~/zephyr-sdk-0.17.4/xtensa-espressif_esp32s3_zephyr-elf/bin/xtensa-espressif_esp32s3_zephyr-elf-g++"),
+          },
+        },
       },
       setup = {
         tailwindcss = function(_, opts)
