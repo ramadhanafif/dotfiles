@@ -1,1 +1,0 @@
-source "/home/ramad/.deno/env.fish"
