@@ -1,2 +1,18 @@
+[settings]
+experimental = true
+
 [tools]
+bun = "latest"
+claude = "latest"
+delta = "latest"
+dust = "latest"
+gdu = "latest"
+glab = { version = "latest", exe = "glab" }
+glow = "latest"
+go = "latest"
+node = "latest"
+opencode = "latest"
+python = "3.12"
+stack = "latest"
 usage = "latest"
+uv = "latest"

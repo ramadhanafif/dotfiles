@@ -1,7 +1,15 @@
 return {
 	{
+		"LazyVim/LazyVim",
+		opts = {
+			colorscheme = function()
+				require("lazy").load({ plugins = { "base16-nvim" } })
+			end,
+		},
+	},
+	{
 		"RRethy/base16-nvim",
-		priority = 1000,
+		lazy = true,
 		config = function()
 			require('base16-colorscheme').setup({
 				base00 = '#10140f',
@@ -80,9 +88,12 @@ return {
 				_G._matugen_theme_watcher = uv.new_fs_event()
 				_G._matugen_theme_watcher:start(current_file_path, {}, vim.schedule_wrap(function()
 					local new_spec = dofile(current_file_path)
-					if new_spec and new_spec[1] and new_spec[1].config then
-						new_spec[1].config()
-						print("Theme reload")
+					for _, spec in ipairs(new_spec or {}) do
+						if spec.config then
+							spec.config()
+							print("Theme reload")
+							break
+						end
 					end
 				end))
 			end
